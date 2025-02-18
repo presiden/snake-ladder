@@ -6,6 +6,16 @@ public class Cell {
 
     private Ladder ladder;
 
+    public Cell(){}
+
+    public Cell (Snake snake){
+        this.snake = snake;
+    }
+
+    public Cell(Ladder ladder){
+        this.ladder = ladder;
+    }
+
     public Snake getSnake() {
         return snake;
     }

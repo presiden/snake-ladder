@@ -25,7 +25,7 @@ public class Main {
 
         for(int x = 0; x < players.length; x++){
             Player player = players[x];
-            int diceNumber = dice.shuffle();
+            int diceNumber = dice.roll();
             int currentPosition = player.getPosition();
             int newPosition = getNextPosition(currentPosition, diceNumber);
             player.setPosition(newPosition);
@@ -60,7 +60,7 @@ public class Main {
             boolean isInvalid = Validation.outOfBoundPosition(head, numberOfCells) ||
                                 Validation.outOfBoundPosition(tail, numberOfCells) ||
                                 Validation.snakeHeadExists(cells[head].getSnake()) ||
-                                Validation.invalidSnakeHeadPosition(head, numberOfCells);
+                                Validation.invalidSnakePosition(head, tail, numberOfCells);
             if (isInvalid) {
                 x--;
                 continue;
@@ -83,6 +83,7 @@ public class Main {
                                 Validation.outOfBoundPosition(end, numberOfCells) ||
                                 Validation.infiniteLoop(start, end, cells) ||
                                 Validation.ladderStartExists(cells[start].getLadder()) ||
+                                Validation.invalidLadderPosition(start, end) ||
                                 Validation.snakeHeadExists(cells[start].getSnake());
             if (isInvalid) {
                 x--;

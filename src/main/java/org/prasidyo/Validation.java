@@ -5,9 +5,15 @@ import java.util.Objects;
 
 public class Validation {
 
-    public static boolean invalidSnakeHeadPosition(int headPosition, int numberOfCells){
+    public static boolean invalidSnakePosition(int headPosition, int tailPosition, int numberOfCells){
         if(headPosition == numberOfCells){
             System.out.println("There won’t be a snake at position " + headPosition);
+            pleaseRetype();
+            return true;
+        }
+
+        if(headPosition <= tailPosition){
+            System.out.println("Snake head must be higher than tail");
             pleaseRetype();
             return true;
         }
@@ -26,6 +32,15 @@ public class Validation {
     public static boolean ladderStartExists(Ladder ladder){
         if(ladder != null){
             System.out.println("There is already a ladder start at position " + ladder.getStart());
+            pleaseRetype();
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean invalidLadderPosition(int start, int end){
+        if(start >= end){
+            System.out.println("Ladder start must be lower than end");
             pleaseRetype();
             return true;
         }

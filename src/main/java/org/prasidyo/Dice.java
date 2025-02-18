@@ -8,7 +8,7 @@ public class Dice {
     int min = 1;
     int max = 6;
 
-    public int shuffle(){
+    public int roll(){
         return random.nextInt((max - min) + 1) + min;
     }
 
